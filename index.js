@@ -42,7 +42,7 @@ exports.handler = function (event, context) {
         if (event.request.type === 'LaunchRequest') {
             onLaunch(event.request, event.session, new Response(context,event.session));
         } 
-	else if (event.request.type === 'IntentRequest') {
+  else if (event.request.type === 'IntentRequest') {
             var response =  new Response(context,event.session);
             if (event.request.intent.name in intentHandlers) {
               intentHandlers[event.request.intent.name](event.request, event.session, response,getSlots(event.request));
@@ -204,31 +204,10 @@ function onLaunch(launchRequest, session, response) {
 
 
 /** For each intent write a intentHandlers */
-intentHandlers['GetCityInformation'] = function(request,session,response,slots) {
+intentHandlers['SayBusStopName'] = function(request,session,response,slots) {
   //Intent logic
-	 console.log('CityName: ' + slots.cityName);
-	return https.get({
-		host: 'en.wikipedia.org',
-		path: '/w/api.php?action=opensearch&search='+ slots.cityName +'&format=json'
-	    }, function(res) {
-			var body = '';
-			res.setEncoding('utf8');
-			res.on('data', function(d) {
-			    body += d;
-			});
-
-			res.on('end', function() {
-			    console.log('BODY : ', body);
-			    var parsed = JSON.parse(body);
-			    var city = parsed[1][0];
-			    var cityDesc = parsed[2][0];
-			    console.log(city, cityDesc);
-			    response.speechText = cityDesc;
-				response.done();
-			});
-    }).on('error', function(error){
-    	console.log('ERROR: ' , error)
-    });
-	
+   console.log('CityName: ' + slots.busStopName);
+   response.speachText('Ok. Let me check. which bus top you want? before Cashew Rd or Cashew station bus stop?');
+   response.done()
 };
 
