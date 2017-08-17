@@ -207,7 +207,7 @@ function onLaunch(launchRequest, session, response) {
 intentHandlers['SayBusStopName'] = function(request,session,response,slots) {
   //Intent logic
    console.log('CityName: ' + slots.busStopName);
-   response.speachText('Ok. Let me check. which bus top you want? before Cashew Rd or Cashew station bus stop?');
+   response.speechText = 'Ok. Let me check. which bus top you want? before Cashew Rd or Cashew station bus stop?';
    response.done()
 };
 
