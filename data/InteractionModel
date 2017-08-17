@@ -1,0 +1,3 @@
+SayBusStopName tell me the bus arrival time for {busStopName} bus stop
+SayBusStopName can you tell me the bus arrival time for {busStopName} bus stop
+SayBusStopName give me the bus arrival time for {busStopName}
