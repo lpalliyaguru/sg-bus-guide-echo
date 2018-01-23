@@ -42,7 +42,7 @@ exports.handler = function (event, context) {
         if (event.request.type === 'LaunchRequest') {
             onLaunch(event.request, event.session, new Response(context,event.session));
         } 
-  else if (event.request.type === 'IntentRequest') {
+        else if (event.request.type === 'IntentRequest') {
             var response =  new Response(context,event.session);
             if (event.request.intent.name in intentHandlers) {
               intentHandlers[event.request.intent.name](event.request, event.session, response,getSlots(event.request));
@@ -179,7 +179,7 @@ function getError(err) {
 //--------------------------------------------- Skill specific logic starts here ----------------------------------------- 
 
 //Add your skill application ID from amazon devloper portal
-var APP_ID = '';
+var APP_ID = 'amzn1.ask.skill.ae34a8b5-f83e-4bff-840f-bfe52c7ce689';
 
 function onSessionStarted(sessionStartedRequest, session) {
     logger.debug('onSessionStarted requestId=' + sessionStartedRequest.requestId + ', sessionId=' + session.sessionId);
